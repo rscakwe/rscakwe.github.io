@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Reza Saputra</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome 6 Free CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous">
 </head>
 
 <body class="bg-red-50 text-gray-800">
@@ -24,7 +23,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <ul class="flex justify-center space-x-8 py-4">
                 <li><a href="#about" class="text-white hover:text-red-200">Tentang Saya</a></li>
-                <li><a href="#skills-section" class="text-white hover:text-red-200">Skills</a></li>
+                <li><a href="#skills-section" class="text-white hover:text-red-200">Kemampuan</a></li>
                 <li><a href="#projects" class="text-white hover:text-red-200">Proyek</a></li>
                 <li><a href="#contact" class="text-white hover:text-red-200">Kontak</a></li>
             </ul>
@@ -48,7 +47,7 @@
     <!-- Skills -->
     <section id="skills-section" class="w-full py-16 px-6 bg-red-50">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-2xl font-semibold mt-8 mb-4 text-center text-red-700">Skills</h3>
+            <h3 class="text-2xl font-semibold mt-8 mb-4 text-center text-red-700">Kemampuan</h3>
             <div id="skills-container" class="flex flex-wrap justify-center gap-4"></div>
         </div>
     </section>
@@ -66,7 +65,20 @@
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-semibold mb-6 text-center text-red-700">Kontak</h2>
             <p class="text-center mb-6 text-red-800">Hubungi saya melalui email atau media sosial:</p>
-            <div id="contact-links" class="flex justify-center flex-wrap gap-8 text-4xl"></div>
+            <div id="contact-links" class="flex justify-center flex-wrap gap-8 text-4xl">
+                <a href="mailto:reza@example.com" class="text-red-400 hover:text-red-600">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://github.com/reza" target="_blank" class="text-red-400 hover:text-red-600">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/reza" target="_blank" class="text-red-400 hover:text-red-600">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/reza" target="_blank" class="text-red-400 hover:text-red-600">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -77,7 +89,7 @@
 
     <script>
         fetch('data.json')
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
                 // Header
                 document.getElementById('name').textContent = data.name;
@@ -141,10 +153,10 @@
                 // Contact
                 const contactContainer = document.getElementById('contact-links');
                 const contactIcons = {
-                    email: { icon: 'fas fa-envelope', color: 'text-red-400 hover:text-red-600', name: 'Email' },
-                    linkedin: { icon: 'fab fa-linkedin', color: 'text-blue-500 hover:text-blue-700', name: 'LinkedIn' },
-                    twitter: { icon: 'fab fa-twitter', color: 'text-blue-400 hover:text-blue-600', name: 'Twitter' },
-                    github: { icon: 'fab fa-github', color: 'text-gray-800 hover:text-gray-600', name: 'GitHub' }
+                    email: { icon: 'fa-solid fa-envelope', color: 'text-red-400 hover:text-red-600', name: 'Email' },
+                    github: { icon: 'fa-brands fa-github', color: 'text-gray-800 hover:text-gray-600', name: 'GitHub' },
+                    linkedin: { icon: 'fa-brands fa-linkedin', color: 'text-blue-500 hover:text-blue-700', name: 'LinkedIn' },
+                    twitter: { icon: 'fa-brands fa-twitter', color: 'text-blue-400 hover:text-blue-600', name: 'Twitter' }
                 };
 
                 for (const key in data.contact) {
@@ -165,7 +177,7 @@
                 }
 
             })
-            .catch(error => console.error('Error loading data.json:', error));
+            .catch(err => console.error('Error loading data.json:', err));
     </script>
 
 </body>
