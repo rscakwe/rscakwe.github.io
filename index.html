@@ -24,6 +24,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <ul class="flex justify-center space-x-8 py-4">
                 <li><a href="#about" class="text-white hover:text-red-200">Tentang Saya</a></li>
+                <li><a href="#skills-section" class="text-white hover:text-red-200">Skills</a></li>
                 <li><a href="#projects" class="text-white hover:text-red-200">Proyek</a></li>
                 <li><a href="#contact" class="text-white hover:text-red-200">Kontak</a></li>
             </ul>
@@ -31,36 +32,46 @@
     </nav>
 
     <!-- Tentang Saya -->
-    <section id="about" class="max-w-5xl mx-auto py-16 px-6">
-        <h2 class="text-3xl font-semibold mb-6 text-red-700 text-center">Tentang Saya</h2>
-        <p id="about-text" class="text-lg leading-relaxed text-center mb-6"></p>
+    <section id="about" class="w-full py-16 px-6 bg-red-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-6 text-center text-red-700">Tentang Saya</h2>
+            <p id="about-text" class="text-lg leading-relaxed text-center mb-6 text-red-800"></p>
 
-        <h3 class="text-2xl font-semibold mb-4 text-red-700">Pengalaman</h3>
-        <div id="experience" class="space-y-4 mb-8"></div>
+            <h3 class="text-2xl font-semibold mb-4 text-red-700">Pengalaman</h3>
+            <div id="experience" class="space-y-4 mb-8"></div>
 
-        <h3 class="text-2xl font-semibold mb-4 text-red-700">Pendidikan</h3>
-        <div id="education" class="space-y-4"></div>
+            <h3 class="text-2xl font-semibold mb-4 text-red-700">Pendidikan</h3>
+            <div id="education" class="space-y-4"></div>
+        </div>
+    </section>
 
-        <h3 class="text-2xl font-semibold mt-8 mb-4 text-red-700 text-center">Skills</h3>
-        <div id="skills" class="flex flex-wrap justify-center gap-4"></div>
+    <!-- Skills -->
+    <section id="skills-section" class="w-full py-16 px-6 bg-red-50">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-2xl font-semibold mt-8 mb-4 text-center text-red-700">Skills</h3>
+            <div id="skills-container" class="flex flex-wrap justify-center gap-4"></div>
+        </div>
     </section>
 
     <!-- Proyek -->
-    <section id="projects" class="bg-red-100 py-16">
-        <h2 class="text-3xl font-semibold mb-10 text-center text-red-700">Proyek Saya</h2>
-        <div id="projects-container"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto px-6"></div>
+    <section id="projects" class="w-full py-16 px-6 bg-red-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-10 text-center text-red-700">Proyek Saya</h2>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+        </div>
     </section>
 
     <!-- Kontak -->
-    <section id="contact" class="max-w-4xl mx-auto py-16 px-6">
-        <h2 class="text-3xl font-semibold mb-6 text-red-700 text-center">Kontak</h2>
-        <p class="text-center mb-6">Hubungi saya melalui email atau media sosial:</p>
-        <div id="contact-links" class="flex justify-center flex-wrap gap-8 text-4xl"></div>
+    <section id="contact" class="w-full py-16 px-6 bg-red-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-6 text-center text-red-700">Kontak</h2>
+            <p class="text-center mb-6 text-red-800">Hubungi saya melalui email atau media sosial:</p>
+            <div id="contact-links" class="flex justify-center flex-wrap gap-8 text-4xl"></div>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-red-600 text-white text-center py-8">
+    <footer class="bg-red-200 text-red-800 text-center py-8">
         &copy; 2026 <span id="footer-name"></span>. Semua hak dilindungi.
     </footer>
 
@@ -103,7 +114,7 @@
                 });
 
                 // Skills
-                const skillsContainer = document.getElementById('skills');
+                const skillsContainer = document.getElementById('skills-container');
                 for (const category in data.skills) {
                     data.skills[category].forEach(skill => {
                         const span = document.createElement('span');
@@ -152,6 +163,7 @@
                     a.appendChild(tooltip);
                     contactContainer.appendChild(a);
                 }
+
             })
             .catch(error => console.error('Error loading data.json:', error));
     </script>
