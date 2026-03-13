@@ -1,0 +1,75 @@
+{
+  "name": "Reza Saputra",
+  "role": "Full Stack Developer",
+  "about": "Saya seorang full stack developer berpengalaman menggunakan CodeIgniter, Laravel, Bootstrap, dan Tailwind CSS. Saya senang membangun aplikasi web modern dan responsif, serta terus belajar teknologi terbaru. Saat ini fokus pada pengembangan web full-stack dan peningkatan pengalaman pengguna.",
+  "experience": [
+    {
+      "company": "PT Tech Solution",
+      "position": "Full Stack Developer",
+      "period": "2022 - Sekarang",
+      "description": "Mengembangkan aplikasi internal dan sistem manajemen menggunakan Laravel dan Tailwind CSS."
+    },
+    {
+      "company": "Freelance Projects",
+      "position": "Web Developer",
+      "period": "2020 - 2022",
+      "description": "Mengerjakan proyek website perusahaan dan e-commerce dengan CodeIgniter dan Bootstrap."
+    }
+  ],
+  "education": [
+    {
+      "institution": "SMK BRAHARI",
+      "degree": "Teknik Komputer dan Jaringan",
+      "period": "2015 - 2017"
+    }
+  ],
+  "skills": {
+    "Frontend": ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS"],
+    "Backend": ["PHP", "Laravel", "CodeIgniter", "MySQL"],
+    "Tools": ["Git", "VS Code", "Postman"]
+  },
+  "projects": [
+    {
+      "title": "Sistem Manajemen Penjualan",
+      "description": "Aplikasi web untuk manajemen penjualan dan stok barang menggunakan Laravel dan Tailwind CSS.",
+      "link": "#",
+      "icon": "fas fa-shopping-cart"
+    },
+    {
+      "title": "Website Profil Perusahaan",
+      "description": "Website profil perusahaan responsif menggunakan Bootstrap dan Laravel.",
+      "link": "#",
+      "icon": "fas fa-building"
+    },
+    {
+      "title": "Aplikasi CRUD Sederhana",
+      "description": "Aplikasi CRUD berbasis CodeIgniter untuk pembelajaran dan prototyping.",
+      "link": "#",
+      "icon": "fas fa-database"
+    },
+    {
+      "title": "E-Commerce Mini",
+      "description": "Platform e-commerce kecil untuk belajar integrasi payment gateway.",
+      "link": "#",
+      "icon": "fas fa-shopping-bag"
+    },
+    {
+      "title": "Blog Pribadi",
+      "description": "Website blog sederhana dengan CMS buatan sendiri menggunakan Laravel.",
+      "link": "#",
+      "icon": "fas fa-blog"
+    },
+    {
+      "title": "Landing Page Startup",
+      "description": "Landing page modern untuk startup menggunakan Tailwind CSS dan animasi ringan.",
+      "link": "#",
+      "icon": "fas fa-rocket"
+    }
+  ],
+  "contact": {
+    "email": "reza.saputra@email.com",
+    "linkedin": "https://www.linkedin.com/in/rezasaputra",
+    "twitter": "https://twitter.com/rezasaputra",
+    "github": "https://github.com/rezasaputra"
+  }
+}
