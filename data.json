@@ -4,16 +4,22 @@
   "about": "Saya seorang full stack developer berpengalaman menggunakan CodeIgniter, Laravel, Bootstrap, dan Tailwind CSS. Saya senang membangun aplikasi web modern dan responsif, serta terus belajar teknologi terbaru. Saat ini fokus pada pengembangan web full-stack dan peningkatan pengalaman pengguna.",
   "experience": [
     {
-      "company": "PT Tech Solution",
-      "position": "Full Stack Developer",
-      "period": "2022 - Sekarang",
-      "description": "Mengembangkan aplikasi internal dan sistem manajemen menggunakan Laravel dan Tailwind CSS."
+      "company": "Harika Prima Sakti",
+      "position": "CRM Operator",
+      "period": "2025",
+      "description": "Mengelola sistem CRM perusahaan untuk mendukung manajemen hubungan pelanggan dan laporan penjualan."
     },
     {
-      "company": "Freelance Projects",
-      "position": "Web Developer",
-      "period": "2020 - 2022",
-      "description": "Mengerjakan proyek website perusahaan dan e-commerce dengan CodeIgniter dan Bootstrap."
+      "company": "PT Sakura Java Indonesia",
+      "position": "Operator",
+      "period": "2019 - 2020",
+      "description": "Bertanggung jawab atas administrasi data operasional dan sistem internal perusahaan."
+    },
+    {
+      "company": "SMK BRAHARI",
+      "position": "Operator Dapodik",
+      "period": "2017 - 2018",
+      "description": "Mengelola data pendidikan nasional menggunakan sistem Dapodik, termasuk input data siswa, guru, dan inventaris sekolah."
     }
   ],
   "education": [
