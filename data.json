@@ -30,46 +30,76 @@
   },
   "projects": [
     {
-      "title": "Sistem Manajemen Penjualan",
-      "description": "Aplikasi web untuk manajemen penjualan dan stok barang menggunakan Laravel dan Tailwind CSS.",
-      "link": "#",
-      "icon": "fas fa-shopping-cart"
+      "title": "Todo List App",
+      "description": "Aplikasi daftar tugas sederhana menggunakan CodeIgniter 3 untuk belajar CRUD dasar.",
+      "link": "https://github.com/rscakwe/ci3-todo-list-app",
+      "icon": "fas fa-list-check"
     },
     {
-      "title": "Website Profil Perusahaan",
-      "description": "Website profil perusahaan responsif menggunakan Bootstrap dan Laravel.",
-      "link": "#",
-      "icon": "fas fa-building"
+      "title": "Portfolio Template",
+      "description": "Template portofolio pribadi sederhana menggunakan Laravel dan Bootstrap.",
+      "link": "https://github.com/rscakwe/laravel-portfolio-template",
+      "icon": "fas fa-user"
     },
     {
-      "title": "Aplikasi CRUD Sederhana",
-      "description": "Aplikasi CRUD berbasis CodeIgniter untuk pembelajaran dan prototyping.",
-      "link": "#",
-      "icon": "fas fa-database"
+      "title": "Catatan Harian",
+      "description": "Aplikasi catatan harian sederhana berbasis CodeIgniter 4 dengan CRUD dan login.",
+      "link": "https://github.com/rscakwe/ci4-catatan-harian",
+      "icon": "fas fa-book"
     },
     {
-      "title": "E-Commerce Mini",
-      "description": "Platform e-commerce kecil untuk belajar integrasi payment gateway.",
-      "link": "#",
-      "icon": "fas fa-shopping-bag"
+      "title": "Mini Blog Laravel",
+      "description": "Blog mini untuk latihan CRUD, routing, dan template Laravel.",
+      "link": "https://github.com/rscakwe/laravel-mini-blog",
+      "icon": "fas fa-pencil-alt"
+    },
+    {
+      "title": "Quiz App",
+      "description": "Aplikasi kuis online sederhana menggunakan Laravel untuk belajar form dan validasi.",
+      "link": "https://github.com/rscakwe/laravel-quiz-app",
+      "icon": "fas fa-question"
+    },
+    {
+      "title": "Weather App",
+      "description": "Aplikasi menampilkan prakiraan cuaca menggunakan API sederhana dengan Laravel.",
+      "link": "https://github.com/rscakwe/laravel-weather-app",
+      "icon": "fas fa-cloud-sun"
     },
     {
       "title": "Blog Pribadi",
       "description": "Website blog sederhana dengan CMS buatan sendiri menggunakan Laravel.",
-      "link": "#",
+      "link": "https://github.com/rscakwe/laravel-blog-pribadi",
       "icon": "fas fa-blog"
     },
     {
       "title": "Landing Page Startup",
       "description": "Landing page modern untuk startup menggunakan Tailwind CSS dan animasi ringan.",
-      "link": "#",
+      "link": "https://github.com/rscakwe/laravel-landing-page-startup",
       "icon": "fas fa-rocket"
+    },
+    {
+      "title": "Website Profil Perusahaan",
+      "description": "Website profil perusahaan responsif menggunakan Bootstrap dan Laravel.",
+      "link": "https://github.com/rscakwe/laravel-website-profil-perusahaan",
+      "icon": "fas fa-building"
+    },
+    {
+      "title": "Sistem Manajemen Penjualan",
+      "description": "Aplikasi web untuk manajemen penjualan dan stok barang menggunakan Laravel dan Tailwind CSS.",
+      "link": "https://github.com/rscakwe/laravel-sistem-manajemen-penjualan",
+      "icon": "fas fa-shopping-cart"
+    },
+    {
+      "title": "Aplikasi CRUD Sederhana",
+      "description": "Aplikasi CRUD berbasis CodeIgniter 3 untuk pembelajaran dan prototyping.",
+      "link": "https://github.com/rscakwe/ci3-aplikasi-crud-sederhana",
+      "icon": "fas fa-database"
+    },
+    {
+      "title": "E-Commerce Mini",
+      "description": "Platform e-commerce kecil berbasis CodeIgniter 4 untuk belajar integrasi payment gateway.",
+      "link": "https://github.com/rscakwe/ci4-e-commerce-mini",
+      "icon": "fas fa-shopping-bag"
     }
-  ],
-  "contact": {
-    "email": "reza.saputra@email.com",
-    "linkedin": "https://www.linkedin.com/in/rezasaputra",
-    "twitter": "https://twitter.com/rezasaputra",
-    "github": "https://github.com/rezasaputra"
-  }
+  ]
 }
