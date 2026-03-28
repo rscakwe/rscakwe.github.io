@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Laskar Pelangi",
+    "author": "Andrea Hirata",
+    "category": "Novel",
+    "year": 2005,
+    "publisher": "Bentang Pustaka",
+    "cover": "assets/images/books/laskar-pelangi.jpg",
+    "status": "tersedia"
+  },
+  {
+    "id": 2,
+    "title": "Bumi",
+    "author": "Tere Liye",
+    "category": "Fantasi",
+    "year": 2014,
+    "publisher": "Gramedia Pustaka Utama",
+    "cover": "assets/images/books/bumi.jpg",
+    "status": "dipinjam"
+  },
+  {
+    "id": 3,
+    "title": "Negeri 5 Menara",
+    "author": "Ahmad Fuadi",
+    "category": "Inspirasi",
+    "year": 2009,
+    "publisher": "Gramedia",
+    "cover": "assets/images/books/negeri-5-menara.jpg",
+    "status": "tersedia"
+  },
+  {
+    "id": 4,
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "category": "Pengembangan Diri",
+    "year": 2018,
+    "publisher": "Penguin Random House",
+    "cover": "assets/images/books/atomic-habits.jpg",
+    "status": "tersedia"
+  },
+  {
+    "id": 5,
+    "title": "Rich Dad Poor Dad",
+    "author": "Robert T. Kiyosaki",
+    "category": "Keuangan",
+    "year": 1997,
+    "publisher": "Warner Books",
+    "cover": "assets/images/books/rich-dad.jpg",
+    "status": "dipinjam"
+  },
+  {
+    "id": 6,
+    "title": "Harry Potter dan Batu Bertuah",
+    "author": "J.K. Rowling",
+    "category": "Fantasi",
+    "year": 1997,
+    "publisher": "Bloomsbury",
+    "cover": "assets/images/books/harry-potter-1.jpg",
+    "status": "tersedia"
+  },
+  {
+    "id": 7,
+    "title": "Sejarah Indonesia",
+    "author": "Slamet Muljana",
+    "category": "Sejarah",
+    "year": 2008,
+    "publisher": "LKiS",
+    "cover": "assets/images/books/sejarah-indonesia.jpg",
+    "status": "tersedia"
+  },
+  {
+    "id": 8,
+    "title": "Fisika Dasar",
+    "author": "Halliday & Resnick",
+    "category": "Pelajaran",
+    "year": 2010,
+    "publisher": "Erlangga",
+    "cover": "assets/images/books/fisika.jpg",
+    "status": "dipinjam"
+  }
+]

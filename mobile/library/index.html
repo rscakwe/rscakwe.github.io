@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-4 bg-white shadow-md">
+        <h1 class="text-xl font-bold text-gray-800">Perpustakaan</h1>
+        <p class="text-sm text-gray-500">Daftar buku tersedia</p>
+    </header>
+
+    <!-- Search -->
+    <div class="p-4">
+        <input id="searchInput" type="text" placeholder="Cari buku..."
+            class="w-full p-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+    </div>
+
+    <!-- Konten -->
+    <main class="flex-1 p-4 pb-20">
+        <div id="bookContainer" class="grid grid-cols-2 gap-4">
+            <!-- Buku dari JS -->
+        </div>
+    </main>
+
+    <!-- Navbar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="../index.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Beranda</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../search.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Cari</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="create.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Tambah</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../notifications.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifikasi</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profil</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        let allBooks = [];
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const container = document.getElementById("bookContainer");
+
+            try {
+                const response = await fetch('../../assets/json/books.json');
+                allBooks = await response.json();
+                renderBooks(allBooks);
+            } catch (err) {
+                container.innerHTML = "<p class='text-red-500'>Gagal memuat buku</p>";
+            }
+
+            document.getElementById("searchInput").addEventListener("input", (e) => {
+                const keyword = e.target.value.toLowerCase();
+                const filtered = allBooks.filter(book =>
+                    book.title.toLowerCase().includes(keyword) ||
+                    book.author.toLowerCase().includes(keyword)
+                );
+                renderBooks(filtered);
+            });
+        });
+
+        function renderBooks(books) {
+            const container = document.getElementById("bookContainer");
+            container.innerHTML = "";
+
+            books.forEach(book => {
+                const statusColor = book.status === "tersedia" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600";
+                const statusText = book.status === "tersedia" ? "Tersedia" : "Dipinjam";
+
+                const div = document.createElement("div");
+                div.className = "bg-white rounded-lg shadow p-3";
+
+                div.innerHTML = `
+                    <img src="../${book.cover}" alt="${book.title}" class="w-full h-32 object-cover rounded mb-2">
+                    
+                    <h3 class="text-sm font-semibold text-gray-800 line-clamp-2">${book.title}</h3>
+                    <p class="text-xs text-gray-500">${book.author}</p>
+
+                    <span class="inline-block mt-2 px-2 py-1 text-xs rounded ${statusColor}">
+                        ${statusText}
+                    </span>
+                `;
+
+                container.appendChild(div);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

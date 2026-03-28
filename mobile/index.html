@@ -72,11 +72,13 @@
                     if (menu.roles.includes(role) || menu.roles.includes('all')) {
                         const a = document.createElement('a');
                         a.href = menu.link;
-                        a.className = `menu-item flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow transition ${menu.bgHover}`;
+                        a.className = `menu-item group flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow transition ${menu.bgHover}`;
+
                         a.innerHTML = `
-                    <i class="${menu.icon} text-2xl text-${menu.color}"></i>
-                    <span class="mt-2 text-sm font-medium text-gray-700">${menu.title}</span>
-                `;
+                            <i class="${menu.icon} text-2xl text-${menu.color} group-hover:text-blue-500 transition"></i>
+                            <span class="mt-2 text-sm font-medium text-gray-700 group-hover:text-blue-500 transition">${menu.title}</span>
+                        `;
+
                         menuContainer.appendChild(a);
                     }
                 });

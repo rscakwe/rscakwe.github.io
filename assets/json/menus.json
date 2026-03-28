@@ -2,7 +2,7 @@
   {
     "title": "Sekolah",
     "icon": "fas fa-school",
-    "color": "blue-500",
+    "color": "gray-600",
     "bgHover": "hover:bg-blue-100",
     "link": "school/index.html",
     "roles": ["all"]
@@ -10,65 +10,63 @@
   {
     "title": "Perpustakaan",
     "icon": "fas fa-book-reader",
-    "color": "gray-700",
-    "bgHover": "hover:bg-gray-200",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "library/index.html",
     "roles": ["all"]
   },
-
   {
     "title": "Jadwal",
     "icon": "fas fa-calendar-alt",
-    "color": "purple-500",
-    "bgHover": "hover:bg-purple-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "schedule/index.html",
     "roles": ["murid"]
   },
   {
     "title": "Nilai",
     "icon": "fas fa-graduation-cap",
-    "color": "red-500",
-    "bgHover": "hover:bg-red-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "grades/index.html",
     "roles": ["murid"]
   },
   {
     "title": "Absensi",
     "icon": "fas fa-clipboard-list",
-    "color": "red-500",
-    "bgHover": "hover:bg-red-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "attendance/index.html",
     "roles": ["murid"]
   },
   {
     "title": "Pengumuman",
     "icon": "fas fa-bullhorn",
-    "color": "indigo-500",
-    "bgHover": "hover:bg-indigo-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "announcements/index.html",
     "roles": ["murid"]
   },
   {
     "title": "Ekstrakurikuler",
     "icon": "fas fa-futbol",
-    "color": "green-500",
-    "bgHover": "hover:bg-green-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "extracurricular/index.html",
     "roles": ["murid"]
   },
-
   {
     "title": "Siswa",
     "icon": "fas fa-user-graduate",
-    "color": "green-500",
-    "bgHover": "hover:bg-green-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "student/index.html",
     "roles": ["guru"]
   },
   {
     "title": "Guru",
     "icon": "fas fa-chalkboard-teacher",
-    "color": "blue-500",
+    "color": "gray-600",
     "bgHover": "hover:bg-blue-100",
     "link": "teacher/index.html",
     "roles": ["guru"]
@@ -76,75 +74,72 @@
   {
     "title": "Mapel",
     "icon": "fas fa-book",
-    "color": "yellow-500",
-    "bgHover": "hover:bg-yellow-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "subjects/index.html",
     "roles": ["guru"]
   },
   {
     "title": "Input Nilai",
     "icon": "fas fa-edit",
-    "color": "red-500",
-    "bgHover": "hover:bg-red-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "input-grades/index.html",
     "roles": ["guru"]
   },
-
   {
     "title": "Nilai Anak",
     "icon": "fas fa-graduation-cap",
-    "color": "red-500",
-    "bgHover": "hover:bg-red-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "child-grades/index.html",
     "roles": ["orangtua"]
   },
   {
     "title": "Absensi Anak",
     "icon": "fas fa-clipboard-list",
-    "color": "purple-500",
-    "bgHover": "hover:bg-purple-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "child-attendance/index.html",
     "roles": ["orangtua"]
   },
   {
     "title": "Pembayaran",
     "icon": "fas fa-money-bill",
-    "color": "green-500",
-    "bgHover": "hover:bg-green-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "payments/index.html",
     "roles": ["orangtua"]
   },
-
   {
     "title": "Kelola Pengguna",
     "icon": "fas fa-users-cog",
-    "color": "teal-500",
-    "bgHover": "hover:bg-teal-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "manage-users/index.html",
     "roles": ["staff"]
   },
   {
     "title": "Laporan",
     "icon": "fas fa-file-alt",
-    "color": "orange-500",
-    "bgHover": "hover:bg-orange-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "reports/index.html",
     "roles": ["staff"]
   },
   {
     "title": "Keuangan",
     "icon": "fas fa-coins",
-    "color": "yellow-500",
-    "bgHover": "hover:bg-yellow-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "finance/index.html",
     "roles": ["staff"]
   },
-
   {
     "title": "Profil",
     "icon": "fas fa-user",
-    "color": "gray-500",
-    "bgHover": "hover:bg-gray-100",
+    "color": "gray-600",
+    "bgHover": "hover:bg-blue-100",
     "link": "profile/index.html",
     "roles": ["all"]
   },
@@ -152,7 +147,7 @@
     "title": "Pengaturan",
     "icon": "fas fa-cog",
     "color": "gray-600",
-    "bgHover": "hover:bg-gray-200",
+    "bgHover": "hover:bg-blue-100",
     "link": "settings/index.html",
     "roles": ["all"]
   }
