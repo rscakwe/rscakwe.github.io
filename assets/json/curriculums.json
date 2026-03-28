@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "name": "Kurikulum Rencana Pelajaran",
+    "year": "1947",
+    "description": "Fokus pada pembentukan karakter",
+    "level": "Nasional"
+  },
+  {
+    "id": 2,
+    "name": "Kurikulum Rencana Pelajaran Terurai",
+    "year": "1952",
+    "description": "Silabus pertama di Indonesia",
+    "level": "Nasional"
+  },
+  {
+    "id": 3,
+    "name": "Kurikulum 1964",
+    "year": "1964",
+    "description": "Berbasis Pancawardhana",
+    "level": "Nasional"
+  },
+  {
+    "id": 4,
+    "name": "Kurikulum 1968",
+    "year": "1968",
+    "description": "Berbasis Pancasila & kecakapan khusus",
+    "level": "Nasional"
+  },
+  {
+    "id": 5,
+    "name": "Kurikulum 1975",
+    "year": "1975",
+    "description": "Berbasis sistem instruksional (PPSI)",
+    "level": "Nasional"
+  },
+  {
+    "id": 6,
+    "name": "Kurikulum 1984",
+    "year": "1984",
+    "description": "CBSA (Cara Belajar Siswa Aktif)",
+    "level": "Nasional"
+  },
+  {
+    "id": 7,
+    "name": "Kurikulum 1994",
+    "year": "1994 - 1999",
+    "description": "Berbasis konsep",
+    "level": "Nasional"
+  },
+  {
+    "id": 8,
+    "name": "Kurikulum Berbasis Kompetensi",
+    "year": "2004",
+    "description": "Fokus pada kompetensi siswa",
+    "level": "Nasional"
+  },
+  {
+    "id": 9,
+    "name": "Kurikulum Tingkat Satuan Pendidikan",
+    "year": "2006",
+    "description": "Kewenangan sekolah dalam pengembangan kurikulum",
+    "level": "Nasional"
+  },
+  {
+    "id": 10,
+    "name": "Kurikulum 2013",
+    "year": "2013",
+    "description": "Pendekatan tematik & saintifik (K-13 & revisi)",
+    "level": "Nasional"
+  },
+  {
+    "id": 11,
+    "name": "Kurikulum Merdeka",
+    "year": "2022 - 2026",
+    "description": "Fleksibel, mendalam, dan berkarakter",
+    "level": "Nasional"
+  }
+]

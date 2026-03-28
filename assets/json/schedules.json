@@ -1,0 +1,67 @@
+[
+  {
+    "day": "Senin",
+    "schedule": [
+      {"time": "07:00 - 08:00", "class": "X IPA 1"},
+      {"time": "08:00 - 09:00", "class": "X IPA 1"},
+      {"time": "09:00 - 10:00", "class": "X IPA 2"},
+      {"time": "10:00 - 11:00", "class": "XI IPA 1"},
+      {"time": "11:00 - 12:00", "class": "XI IPA 2"},
+      {"time": "12:00 - 13:00", "class": "Istirahat"},
+      {"time": "13:00 - 14:00", "class": "XII IPA 1"},
+      {"time": "14:00 - 15:00", "class": "XII IPS 1"}
+    ]
+  },
+  {
+    "day": "Selasa",
+    "schedule": [
+      {"time": "07:00 - 08:00", "class": "X IPA 1"},
+      {"time": "08:00 - 09:00", "class": "X IPS 2"},
+      {"time": "09:00 - 10:00", "class": "X IPA 2"},
+      {"time": "10:00 - 11:00", "class": "XI IPS 2"},
+      {"time": "11:00 - 12:00", "class": "XI IPA 1"},
+      {"time": "12:00 - 13:00", "class": "Istirahat"},
+      {"time": "13:00 - 14:00", "class": "XII IPA 2"},
+      {"time": "14:00 - 15:00", "class": "XII IPS 1"}
+    ]
+  },
+  {
+    "day": "Rabu",
+    "schedule": [
+      {"time": "07:00 - 08:00", "class": "X IPA 1"},
+      {"time": "08:00 - 09:00", "class": "X IPS 2"},
+      {"time": "09:00 - 10:00", "class": "XI IPS 1"},
+      {"time": "10:00 - 11:00", "class": "XI IPA 1"},
+      {"time": "11:00 - 12:00", "class": "XI IPS 2"},
+      {"time": "12:00 - 13:00", "class": "Istirahat"},
+      {"time": "13:00 - 14:00", "class": "XII IPA 1"},
+      {"time": "14:00 - 15:00", "class": "XII IPS 2"}
+    ]
+  },
+  {
+    "day": "Kamis",
+    "schedule": [
+      {"time": "07:00 - 08:00", "class": "X IPA 2"},
+      {"time": "08:00 - 09:00", "class": "X IPS 1"},
+      {"time": "09:00 - 10:00", "class": "XI IPS 2"},
+      {"time": "10:00 - 11:00", "class": "XI IPS 2"},
+      {"time": "11:00 - 12:00", "class": "XI IPA 2"},
+      {"time": "12:00 - 13:00", "class": "Istirahat"},
+      {"time": "13:00 - 14:00", "class": "XII IPA 2"},
+      {"time": "14:00 - 15:00", "class": "XII IPS 1"}
+    ]
+  },
+  {
+    "day": "Jumat",
+    "schedule": [
+      {"time": "07:00 - 08:00", "class": "X IPA 1"},
+      {"time": "08:00 - 09:00", "class": "X IPS 2"},
+      {"time": "09:00 - 10:00", "class": "XI IPS 1"},
+      {"time": "10:00 - 11:00", "class": "XI IPA 2"},
+      {"time": "11:00 - 12:00", "class": "XII IPS 1"},
+      {"time": "12:00 - 13:00", "class": "Istirahat"},
+      {"time": "13:00 - 14:00", "class": "XII IPA 1"},
+      {"time": "14:00 - 15:00", "class": "XII IPS 2"}
+    ]
+  }
+]

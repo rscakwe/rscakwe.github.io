@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Matematika",
+        "code": "MATH101",
+        "teacher": "Budi Santoso"
+    },
+    {
+        "id": 2,
+        "name": "Bahasa Indonesia",
+        "code": "INDO102",
+        "teacher": "Siti Aminah"
+    },
+    {
+        "id": 3,
+        "name": "Fisika",
+        "code": "PHYS103",
+        "teacher": "Agus Hidayat"
+    },
+    {
+        "id": 4,
+        "name": "Kimia",
+        "code": "CHEM104",
+        "teacher": "Rina Permata"
+    },
+    {
+        "id": 5,
+        "name": "Biologi",
+        "code": "BIO105",
+        "teacher": "Dewi Lestari"
+    },
+    {
+        "id": 6,
+        "name": "Sejarah",
+        "code": "HIST106",
+        "teacher": "Anton Prabowo"
+    },
+    {
+        "id": 7,
+        "name": "Geografi",
+        "code": "GEO107",
+        "teacher": "Lina Marlina"
+    },
+    {
+        "id": 8,
+        "name": "Bahasa Inggris",
+        "code": "ENG108",
+        "teacher": "James Smith"
+    }
+]

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2">
+            <i class="fas fa-hand-holding-dollar"></i> Tip Calculator
+        </h1>
+        <a href="../index.html" class="text-blue-700 hover:underline">
+            <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <!-- Card -->
+    <div class="bg-white p-6 rounded-xl shadow w-full max-w-md">
+
+        <!-- Total Bill -->
+        <div class="mb-4">
+            <label class="block text-sm text-gray-600 mb-1">Total Tagihan (Rp)</label>
+            <input type="number" id="bill" class="w-full border rounded p-2 focus:outline-blue-500"
+                placeholder="Contoh: 100000">
+        </div>
+
+        <!-- Tip -->
+        <div class="mb-4">
+            <label class="block text-sm text-gray-600 mb-1">Tip (%)</label>
+            <input type="number" id="tip" class="w-full border rounded p-2 focus:outline-blue-500"
+                placeholder="Contoh: 10">
+        </div>
+
+        <!-- People -->
+        <div class="mb-4">
+            <label class="block text-sm text-gray-600 mb-1">Jumlah Orang</label>
+            <input type="number" id="people" class="w-full border rounded p-2 focus:outline-blue-500"
+                placeholder="Contoh: 2">
+        </div>
+
+        <!-- Button -->
+        <button id="calculate" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mb-4">
+            Hitung
+        </button>
+
+        <!-- Result -->
+        <div class="bg-blue-50 p-4 rounded text-center">
+            <p class="text-gray-600">Tip:</p>
+            <h2 id="tipAmount" class="text-xl font-bold text-blue-700">Rp 0</h2>
+
+            <p class="text-gray-600 mt-2">Total + Tip:</p>
+            <h2 id="totalAmount" class="text-xl font-bold text-blue-700">Rp 0</h2>
+
+            <p class="text-gray-600 mt-2">Per Orang:</p>
+            <h2 id="perPerson" class="text-xl font-bold text-blue-700">Rp 0</h2>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        $(document).ready(function () {
+
+            function formatRupiah(angka) {
+                return "Rp " + angka.toLocaleString("id-ID");
+            }
+
+            $('#calculate').click(function () {
+                let bill = parseFloat($('#bill').val());
+                let tipPercent = parseFloat($('#tip').val());
+                let people = parseInt($('#people').val());
+
+                if (!bill || !tipPercent || !people || people <= 0) {
+                    alert("Mohon isi semua field dengan benar!");
+                    return;
+                }
+
+                let tipAmount = bill * (tipPercent / 100);
+                let total = bill + tipAmount;
+                let perPerson = total / people;
+
+                $('#tipAmount').text(formatRupiah(tipAmount));
+                $('#totalAmount').text(formatRupiah(total));
+                $('#perPerson').text(formatRupiah(perPerson));
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Mini App</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2">
+            <i class="fas fa-cloud-sun"></i> Weather App
+        </h1>
+        <a href="../index.html" class="text-blue-700 hover:underline">
+            <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <!-- Card -->
+    <div class="bg-white p-6 rounded-xl shadow w-full max-w-md text-center">
+
+        <!-- Input -->
+        <div class="flex mb-4">
+            <input type="text" id="city" placeholder="Masukkan nama kota..."
+                class="flex-1 border rounded-l p-2 focus:outline-blue-500">
+            <button id="search" class="bg-blue-600 text-white px-4 rounded-r hover:bg-blue-700">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <!-- Result -->
+        <div id="weatherResult" class="hidden">
+
+            <h2 id="cityName" class="text-xl font-bold text-blue-700"></h2>
+
+            <img id="weatherIcon" class="mx-auto my-2" src="" alt="icon">
+
+            <p id="temperature" class="text-3xl font-semibold text-blue-800"></p>
+            <p id="description" class="text-gray-600 capitalize"></p>
+
+        </div>
+
+        <!-- Error -->
+        <p id="error" class="text-red-500 hidden mt-2"></p>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        $(document).ready(function () {
+
+            const apiKey = "YOUR_API_KEY"; // Ganti dengan API key kamu
+
+            $('#search').click(function () {
+                let city = $('#city').val();
+
+                if (!city) {
+                    $('#error').text("Masukkan nama kota!").removeClass('hidden');
+                    return;
+                }
+
+                $('#error').addClass('hidden');
+
+                $.ajax({
+                    url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=id`,
+                    method: "GET",
+                    success: function (data) {
+
+                        $('#weatherResult').removeClass('hidden');
+
+                        $('#cityName').text(data.name);
+                        $('#temperature').text(`${Math.round(data.main.temp)}°C`);
+                        $('#description').text(data.weather[0].description);
+
+                        let icon = data.weather[0].icon;
+                        $('#weatherIcon').attr('src', `https://openweathermap.org/img/wn/${icon}@2x.png`);
+
+                    },
+                    error: function () {
+                        $('#weatherResult').addClass('hidden');
+                        $('#error').text("Kota tidak ditemukan!").removeClass('hidden');
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

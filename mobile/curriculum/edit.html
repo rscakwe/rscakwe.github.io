@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Kurikulum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-4 bg-yellow-500 text-white shadow-md">
+        <h1 class="text-xl font-bold">Edit Kurikulum</h1>
+        <p class="text-sm">Ubah data kurikulum</p>
+    </header>
+
+    <!-- Form -->
+    <main class="flex-1 p-4 pb-20">
+        <form id="editForm" class="space-y-4">
+
+            <!-- Nama -->
+            <div>
+                <label class="block text-gray-700 mb-1">Nama Kurikulum</label>
+                <input type="text" id="name"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500" />
+            </div>
+
+            <!-- Tahun -->
+            <div>
+                <label class="block text-gray-700 mb-1">Tahun</label>
+                <input type="text" id="year"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500" />
+            </div>
+
+            <!-- Level -->
+            <div>
+                <label class="block text-gray-700 mb-1">Jenjang</label>
+                <select id="level"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500">
+                    <option value="SD">SD</option>
+                    <option value="SMP">SMP</option>
+                    <option value="SMA">SMA</option>
+                    <option value="Nasional">Nasional</option>
+                </select>
+            </div>
+
+            <!-- Deskripsi -->
+            <div>
+                <label class="block text-gray-700 mb-1">Deskripsi</label>
+                <textarea id="description" rows="3"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500"></textarea>
+            </div>
+
+            <!-- Tombol -->
+            <div>
+                <button type="submit"
+                    class="w-full bg-yellow-500 text-white p-3 rounded-lg hover:bg-yellow-600 transition">
+                    <i class="fas fa-save mr-2"></i> Simpan Perubahan
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- Navbar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="../index.html" class="flex flex-col items-center text-gray-600 hover:text-yellow-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Beranda</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../search.html" class="flex flex-col items-center text-gray-600 hover:text-yellow-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Cari</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="create.html" class="flex flex-col items-center text-gray-600 hover:text-yellow-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Tambah</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../notifications.html" class="flex flex-col items-center text-gray-600 hover:text-yellow-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifikasi</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../profile.html" class="flex flex-col items-center text-gray-600 hover:text-yellow-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profil</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        // Ambil ID dari URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        let data = JSON.parse(localStorage.getItem('curriculums')) || [];
+
+        // Cari data berdasarkan ID
+        const curriculum = data.find(item => item.id == id);
+
+        // Isi form
+        if (curriculum) {
+            document.getElementById('name').value = curriculum.name;
+            document.getElementById('year').value = curriculum.year;
+            document.getElementById('level').value = curriculum.level;
+            document.getElementById('description').value = curriculum.description;
+        }
+
+        // Submit update
+        document.getElementById('editForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const updatedData = {
+                id: curriculum.id,
+                name: document.getElementById('name').value,
+                year: document.getElementById('year').value,
+                level: document.getElementById('level').value,
+                description: document.getElementById('description').value
+            };
+
+            // Update data
+            data = data.map(item => item.id == id ? updatedData : item);
+
+            localStorage.setItem('curriculums', JSON.stringify(data));
+
+            alert('Data berhasil diupdate!');
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>

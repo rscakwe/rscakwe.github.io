@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Gambar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col items-center p-6">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2"><i class="fas fa-image"></i> Gallery Gambar</h1>
+        <a href="../index.html" class="text-blue-700 hover:underline"><i class="fas fa-arrow-left"></i> Kembali ke
+            Portfolio</a>
+    </header>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl">
+        <img src="https://via.placeholder.com/150" alt="Gambar 1"
+            class="cursor-pointer rounded shadow hover:scale-105 transition transform"
+            data-full="https://via.placeholder.com/600">
+        <img src="https://via.placeholder.com/150/0077cc" alt="Gambar 2"
+            class="cursor-pointer rounded shadow hover:scale-105 transition transform"
+            data-full="https://via.placeholder.com/600/0077cc">
+        <img src="https://via.placeholder.com/150/00cc77" alt="Gambar 3"
+            class="cursor-pointer rounded shadow hover:scale-105 transition transform"
+            data-full="https://via.placeholder.com/600/00cc77">
+        <img src="https://via.placeholder.com/150/cc7700" alt="Gambar 4"
+            class="cursor-pointer rounded shadow hover:scale-105 transition transform"
+            data-full="https://via.placeholder.com/600/cc7700">
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+        <img id="lightbox-img" src="" class="max-h-full max-w-full rounded shadow-lg">
+        <button id="closeLightbox" class="absolute top-4 right-4 text-white text-3xl hover:text-red-500"><i
+                class="fas fa-times"></i></button>
+    </div>
+
+    <!-- jQuery Script -->
+    <script>
+        $(document).ready(function () {
+            $('img[data-full]').click(function () {
+                let src = $(this).data('full');
+                $('#lightbox-img').attr('src', src);
+                $('#lightbox').fadeIn();
+            });
+
+            $('#closeLightbox').click(function () {
+                $('#lightbox').fadeOut();
+            });
+
+            $('#lightbox').click(function (e) {
+                if (e.target.id === 'lightbox') {
+                    $('#lightbox').fadeOut();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

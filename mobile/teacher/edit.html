@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Guru</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-4 bg-blue-500 text-white shadow-md">
+        <h1 class="text-xl font-bold">Edit Guru</h1>
+        <p class="text-sm">Ubah data guru di bawah</p>
+    </header>
+
+    <!-- Form -->
+    <main class="flex-1 p-4 pb-20">
+        <form id="editForm" class="space-y-4">
+
+            <!-- Nama -->
+            <div>
+                <label class="block text-gray-700 mb-1">Nama Guru</label>
+                <input type="text" id="name"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+            <!-- NIP -->
+            <div>
+                <label class="block text-gray-700 mb-1">NIP</label>
+                <input type="text" id="nip"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+            <!-- Mata Pelajaran -->
+            <div>
+                <label class="block text-gray-700 mb-1">Mata Pelajaran</label>
+                <input type="text" id="subject"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label class="block text-gray-700 mb-1">Jenis Kelamin</label>
+                <select id="gender"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="">Pilih</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+
+            <!-- Alamat -->
+            <div>
+                <label class="block text-gray-700 mb-1">Alamat</label>
+                <textarea id="address" rows="2"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+
+            <!-- Tombol -->
+            <div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">
+                    <i class="fas fa-save mr-2"></i> Simpan Perubahan
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- Navbar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="../../index.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Beranda</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Cari</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="create.html" class="flex flex-col items-center text-blue-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Tambah</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../../notifications.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifikasi</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../../profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profil</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        // Ambil ID dari URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        let data = JSON.parse(localStorage.getItem('teachers')) || [];
+
+        // Cari guru
+        const teacher = data.find(item => item.id == id);
+
+        // Isi form
+        if (teacher) {
+            document.getElementById('name').value = teacher.name;
+            document.getElementById('nip').value = teacher.nip;
+            document.getElementById('subject').value = teacher.subject;
+            document.getElementById('gender').value = teacher.gender;
+            document.getElementById('address').value = teacher.address;
+        }
+
+        // Submit update
+        document.getElementById('editForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const updatedTeacher = {
+                id: teacher.id,
+                name: document.getElementById('name').value,
+                nip: document.getElementById('nip').value,
+                subject: document.getElementById('subject').value,
+                gender: document.getElementById('gender').value,
+                address: document.getElementById('address').value
+            };
+
+            data = data.map(item => item.id == id ? updatedTeacher : item);
+
+            localStorage.setItem('teachers', JSON.stringify(data));
+
+            alert('Data guru berhasil diupdate!');
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch & Timer</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2">
+            <i class="fas fa-stopwatch"></i> Stopwatch & Timer
+        </h1>
+        <a href="../index.html" class="text-blue-700 hover:underline">
+            <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <!-- Container -->
+    <div class="grid md:grid-cols-2 gap-8 w-full max-w-4xl">
+
+        <!-- STOPWATCH -->
+        <div class="bg-white p-6 rounded-xl shadow text-center">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">
+                <i class="fas fa-stopwatch"></i> Stopwatch
+            </h2>
+
+            <div id="stopwatchDisplay" class="text-5xl font-mono text-blue-800 mb-6">
+                00:00:00
+            </div>
+
+            <div class="space-x-2">
+                <button id="startSW" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Start
+                </button>
+                <button id="pauseSW" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+                    Pause
+                </button>
+                <button id="resetSW" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- TIMER -->
+        <div class="bg-white p-6 rounded-xl shadow text-center">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">
+                <i class="fas fa-hourglass-half"></i> Timer
+            </h2>
+
+            <div id="timerDisplay" class="text-5xl font-mono text-blue-800 mb-4">
+                00:00
+            </div>
+
+            <input type="number" id="timerInput" placeholder="Masukkan detik"
+                class="border p-2 rounded w-full mb-4 text-center" />
+
+            <div class="space-x-2">
+                <button id="startTimer" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Start
+                </button>
+                <button id="resetTimer" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        $(document).ready(function () {
+
+            // ================= STOPWATCH =================
+            let swTime = 0;
+            let swInterval;
+
+            function formatTime(sec) {
+                let h = Math.floor(sec / 3600).toString().padStart(2, '0');
+                let m = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+                let s = (sec % 60).toString().padStart(2, '0');
+                return `${h}:${m}:${s}`;
+            }
+
+            $('#startSW').click(function () {
+                if (!swInterval) {
+                    swInterval = setInterval(() => {
+                        swTime++;
+                        $('#stopwatchDisplay').text(formatTime(swTime));
+                    }, 1000);
+                }
+            });
+
+            $('#pauseSW').click(function () {
+                clearInterval(swInterval);
+                swInterval = null;
+            });
+
+            $('#resetSW').click(function () {
+                clearInterval(swInterval);
+                swInterval = null;
+                swTime = 0;
+                $('#stopwatchDisplay').text("00:00:00");
+            });
+
+            // ================= TIMER =================
+            let timer;
+            let timerInterval;
+
+            function formatTimer(sec) {
+                let m = Math.floor(sec / 60).toString().padStart(2, '0');
+                let s = (sec % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            }
+
+            $('#startTimer').click(function () {
+                timer = parseInt($('#timerInput').val());
+
+                if (!timer || timer <= 0) {
+                    alert("Masukkan waktu dalam detik!");
+                    return;
+                }
+
+                clearInterval(timerInterval);
+
+                timerInterval = setInterval(() => {
+                    timer--;
+                    $('#timerDisplay').text(formatTimer(timer));
+
+                    if (timer <= 0) {
+                        clearInterval(timerInterval);
+                        $('#timerDisplay').text("00:00");
+                        alert("Waktu habis!");
+                    }
+                }, 1000);
+            });
+
+            $('#resetTimer').click(function () {
+                clearInterval(timerInterval);
+                $('#timerDisplay').text("00:00");
+                $('#timerInput').val('');
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

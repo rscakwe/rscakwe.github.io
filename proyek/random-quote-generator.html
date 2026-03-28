@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2">
+            <i class="fas fa-quote-left"></i> Random Quote Generator
+        </h1>
+        <a href="../index.html" class="text-blue-700 hover:underline">
+            <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <!-- Card -->
+    <div class="bg-white p-6 rounded-xl shadow w-full max-w-xl text-center">
+
+        <!-- Quote -->
+        <p id="quoteText" class="text-xl text-gray-700 mb-4">
+            Klik tombol untuk mendapatkan quote...
+        </p>
+
+        <!-- Author -->
+        <p id="quoteAuthor" class="text-gray-500 mb-6">
+            -
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex justify-center gap-3 flex-wrap">
+
+            <button id="newQuote" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <i class="fas fa-random"></i> Quote Baru
+            </button>
+
+            <button id="copyQuote" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                <i class="fas fa-copy"></i> Copy
+            </button>
+
+            <button id="shareTwitter" class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
+                <i class="fab fa-twitter"></i> Share
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        $(document).ready(function () {
+
+            const quotes = [
+                { text: "Kesuksesan adalah hasil dari usaha yang konsisten.", author: "Unknown" },
+                { text: "Jangan takut gagal, takutlah untuk tidak mencoba.", author: "Unknown" },
+                { text: "Belajar hari ini, sukses di masa depan.", author: "Unknown" },
+                { text: "Kerja keras mengalahkan bakat jika bakat tidak bekerja keras.", author: "Unknown" },
+                { text: "Mulai dari yang kecil, lakukan sekarang.", author: "Unknown" }
+            ];
+
+            function getRandomQuote() {
+                let random = quotes[Math.floor(Math.random() * quotes.length)];
+                $('#quoteText').text(`"${random.text}"`);
+                $('#quoteAuthor').text(`- ${random.author}`);
+            }
+
+            $('#newQuote').click(function () {
+                getRandomQuote();
+            });
+
+            $('#copyQuote').click(function () {
+                let text = $('#quoteText').text() + " " + $('#quoteAuthor').text();
+
+                navigator.clipboard.writeText(text).then(() => {
+                    $(this).text('Copied!');
+                    setTimeout(() => {
+                        $(this).html('<i class="fas fa-copy"></i> Copy');
+                    }, 1500);
+                });
+            });
+
+            $('#shareTwitter').click(function () {
+                let text = $('#quoteText').text() + " " + $('#quoteAuthor').text();
+                let url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

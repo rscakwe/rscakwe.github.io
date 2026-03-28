@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-4 bg-white shadow-md flex items-center">
+        <i class="fas fa-search text-gray-500 mr-2"></i>
+        <input type="text" placeholder="Cari sekolah, kelas, materi..."
+            class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </header>
+
+    <!-- Hasil Pencarian -->
+    <main class="flex-1 p-4 overflow-y-auto">
+        <h2 class="text-lg font-bold mb-2">Hasil Pencarian</h2>
+
+        <ul class="space-y-3">
+            <li class="bg-white p-4 rounded-lg shadow hover:bg-blue-50 transition">
+                <h3 class="font-medium text-gray-800">Sekolah Dasar 1</h3>
+                <p class="text-sm text-gray-500">Alamat: Jalan Merdeka No.1</p>
+            </li>
+            <li class="bg-white p-4 rounded-lg shadow hover:bg-blue-50 transition">
+                <h3 class="font-medium text-gray-800">Kelas 5A</h3>
+                <p class="text-sm text-gray-500">Guru: Bapak Ahmad</p>
+            </li>
+            <li class="bg-white p-4 rounded-lg shadow hover:bg-blue-50 transition">
+                <h3 class="font-medium text-gray-800">Kurikulum 2026</h3>
+                <p class="text-sm text-gray-500">Materi terbaru untuk SD dan SMP</p>
+            </li>
+            <li class="bg-white p-4 rounded-lg shadow hover:bg-blue-50 transition">
+                <h3 class="font-medium text-gray-800">Sekolah Menengah Pertama 3</h3>
+                <p class="text-sm text-gray-500">Alamat: Jalan Sudirman No.10</p>
+            </li>
+        </ul>
+    </main>
+
+    <!-- Navbar Bottom -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="index.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Home</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="search.html" class="flex flex-col items-center text-blue-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Search</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="add.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Add</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="notifications.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifications</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Bapak Ahmad",
+    "subject": "Matematika",
+    "nip": "1987654321"
+  },
+  {
+    "id": 2,
+    "name": "Ibu Sari",
+    "subject": "Bahasa Indonesia",
+    "nip": "1981234567"
+  }
+]

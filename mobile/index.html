@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-4 bg-white shadow-md">
+        <h1 class="text-xl font-bold text-gray-800">Selamat Datang!</h1>
+        <p class="text-sm text-gray-500">Pilih menu di bawah untuk mulai</p>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="flex-1 p-4 pb-20">
+        <div id="menuContainer" class="grid grid-cols-3 gap-4">
+            <!-- Menu akan diisi dari JS -->
+        </div>
+    </main>
+
+    <!-- Navbar Bottom -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="index.html" class="flex flex-col items-center text-blue-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Beranda</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="search.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Cari</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="add.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Tambah</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2 relative">
+                <a href="notifications.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifikasi</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profil</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const role = localStorage.getItem('currentUserRole') || 'murid';
+            const menuContainer = document.getElementById('menuContainer');
+
+            try {
+                const response = await fetch('../assets/json/menus.json');
+                const menus = await response.json();
+
+                menus.forEach(menu => {
+                    if (menu.roles.includes(role) || menu.roles.includes('all')) {
+                        const a = document.createElement('a');
+                        a.href = menu.link;
+                        a.className = `menu-item flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow transition ${menu.bgHover}`;
+                        a.innerHTML = `
+                    <i class="${menu.icon} text-2xl text-${menu.color}"></i>
+                    <span class="mt-2 text-sm font-medium text-gray-700">${menu.title}</span>
+                `;
+                        menuContainer.appendChild(a);
+                    }
+                });
+            } catch (error) {
+                console.error("Gagal memuat menu:", error);
+                menuContainer.innerHTML = "<p class='text-red-500'>Gagal memuat menu.</p>";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

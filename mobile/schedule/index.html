@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Mengajar</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* Style untuk card checkbox */
+        .schedule-card {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .schedule-card.selected {
+            background-color: #dbeafe;
+            /* biru muda */
+            border: 2px solid #3b82f6;
+        }
+
+        .schedule-card .checkmark {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.2rem;
+            color: #10b981;
+            /* hijau */
+            display: none;
+        }
+
+        .schedule-card.selected .checkmark {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- ================= HEADER ================= -->
+    <header class="p-4 bg-blue-500 text-white shadow flex justify-between items-center relative">
+        <!-- Back -->
+        <a href="index.html" class="text-xl">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <!-- Title -->
+        <h1 class="text-lg font-semibold">Jadwal Hari Ini</h1>
+
+        <!-- Dropdown Header -->
+        <div class="relative">
+            <button id="headerMenuBtn" class="text-xl">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </button>
+
+            <div id="headerDropdown"
+                class="hidden absolute right-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg z-50">
+
+                <a href="#" onclick="alert('Detail halaman')" class="block px-4 py-2 hover:bg-gray-100">
+                    <i class="fas fa-eye mr-2"></i> Detail
+                </a>
+
+                <a href="#" onclick="alert('Edit halaman')" class="block px-4 py-2 hover:bg-gray-100">
+                    <i class="fas fa-edit mr-2"></i> Edit
+                </a>
+
+                <button onclick="alert('Hapus halaman')"
+                    class="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100">
+                    <i class="fas fa-trash mr-2"></i> Delete
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ================= CONTENT ================= -->
+    <main class="flex-1 p-4 pb-20">
+        <div id="scheduleList" class="space-y-3"></div>
+    </main>
+
+
+    <!-- Navbar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="../index.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Beranda</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../search.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Cari</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="create.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Tambah</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../notifications.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifikasi</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profil</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        // ================= HARI =================
+        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        const todayName = days[new Date().getDay()];
+
+        const container = document.getElementById('scheduleList');
+
+        container.innerHTML = `
+        <h2 class="text-lg font-bold mb-4">
+            Jadwal Hari ${todayName}
+        </h2>
+    `;
+
+        // ================= AMBIL JSON DARI FILE =================
+        fetch('../../assets/json/schedules.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Gagal memuat jadwal');
+                return response.json();
+            })
+            .then(schedulesData => {
+                // cari jadwal hari ini
+                const todaySchedule = schedulesData.find(d => d.day === todayName);
+
+                if (!todaySchedule) {
+                    container.innerHTML += `
+                    <p class="text-gray-500 text-center">
+                        Tidak ada jadwal hari ini
+                    </p>
+                `;
+                } else {
+                    todaySchedule.schedule.forEach(s => {
+                        const card = document.createElement('div');
+                        card.className = "schedule-card bg-white p-4 rounded-lg shadow relative";
+
+                        card.innerHTML = `
+                        <div>
+                            <span class="font-semibold text-blue-500">${s.time}</span>
+                            <p class="text-gray-700 mt-1">Kelas: ${s.class}</p>
+                        </div>
+                        <div class="checkmark">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    `;
+
+                        // klik toggle selected
+                        card.addEventListener('click', () => {
+                            card.classList.toggle('selected');
+                        });
+
+                        container.appendChild(card);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                container.innerHTML += `
+                <p class="text-red-500 text-center">
+                    Gagal memuat jadwal
+                </p>
+            `;
+            });
+
+        // ================= DROPDOWN HEADER =================
+        const headerMenuBtn = document.getElementById("headerMenuBtn");
+        const headerDropdown = document.getElementById("headerDropdown");
+
+        headerMenuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            headerDropdown.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!headerDropdown.contains(e.target) && !headerMenuBtn.contains(e.target)) {
+                headerDropdown.classList.add("hidden");
+            }
+        });
+    </script>
+</body>
+
+</html>

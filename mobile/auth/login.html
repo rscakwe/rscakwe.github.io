@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Universal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-blue-50 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <!-- Header -->
+    <div class="text-center mb-6 w-full max-w-md">
+        <i class="fas fa-lock text-4xl text-blue-500 mb-2"></i>
+        <h1 class="text-2xl font-bold text-gray-800">Masuk</h1>
+        <p class="text-sm text-gray-700">Masukkan akun Anda untuk melanjutkan</p>
+    </div>
+
+    <!-- Form Login -->
+    <form id="loginForm" class="w-full max-w-md space-y-4">
+        <div>
+            <label for="email" class="block text-gray-800 mb-1">Email</label>
+            <input type="email" id="email" placeholder="Masukkan email"
+                class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50"
+                required />
+        </div>
+
+        <div>
+            <label for="password" class="block text-gray-800 mb-1">Password</label>
+            <input type="password" id="password" placeholder="Masukkan password"
+                class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50"
+                required />
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-gray-700">
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" class="h-4 w-4 text-blue-500 focus:ring-blue-400 rounded">
+                <span>Ingat saya</span>
+            </label>
+            <a href="forgot-password.html" class="text-blue-500 hover:underline">Lupa password?</a>
+        </div>
+
+        <div>
+            <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white p-3 rounded font-semibold transition">
+                <i class="fas fa-sign-in-alt mr-2"></i> Masuk
+            </button>
+        </div>
+    </form>
+
+    <!-- Link Daftar -->
+    <div class="mt-4 text-center text-sm text-gray-700 w-full max-w-md">
+        <p>Belum punya akun? <a href="register.html" class="text-blue-600 hover:underline">Daftar</a></p>
+    </div>
+
+    <script>
+        // Fungsi login generik
+        function loginUser(list) {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            return list.find(user => user.email === email && user.password === password);
+        }
+
+        // Ambil data dari localStorage
+        const staffList = JSON.parse(localStorage.getItem('staffList')) || [];
+        const teacherList = JSON.parse(localStorage.getItem('teacherList')) || [];
+        const studentList = JSON.parse(localStorage.getItem('studentList')) || [];
+        const parentList = JSON.parse(localStorage.getItem('parentList')) || [];
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let user = loginUser(staffList);
+            if (user) {
+                localStorage.setItem('currentUserRole', 'staff'); // simpan role
+                alert('Login berhasil! (Staff)');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            user = loginUser(teacherList);
+            if (user) {
+                localStorage.setItem('currentUserRole', 'guru'); // simpan role
+                alert('Login berhasil! (Guru)');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            user = loginUser(studentList);
+            if (user) {
+                localStorage.setItem('currentUserRole', 'murid'); // simpan role
+                alert('Login berhasil! (Murid)');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            user = loginUser(parentList);
+            if (user) {
+                localStorage.setItem('currentUserRole', 'orangtua'); // simpan role
+                alert('Login berhasil! (Orang Tua)');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            alert('Email atau password salah!');
+        });
+    </script>
+
+</body>
+
+</html>

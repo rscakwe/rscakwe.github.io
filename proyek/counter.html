@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Klik</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-4xl font-bold text-blue-700 mb-2"><i class="fas fa-calculator"></i> Counter Klik</h1>
+        <a href="../index.html" class="text-blue-700 hover:underline"><i class="fas fa-arrow-left"></i> Kembali ke
+            Portfolio</a>
+    </header>
+
+    <!-- Counter Display -->
+    <div class="text-center mb-4">
+        <span id="count" class="text-6xl font-bold text-blue-800">0</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex space-x-4">
+        <button id="decrease" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600"><i
+                class="fas fa-minus"></i></button>
+        <button id="reset" class="bg-gray-400 text-white px-6 py-2 rounded hover:bg-gray-500"><i
+                class="fas fa-sync-alt"></i></button>
+        <button id="increase" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"><i
+                class="fas fa-plus"></i></button>
+    </div>
+
+    <!-- jQuery Script -->
+    <script>
+        $(document).ready(function () {
+            let counter = 0;
+
+            function updateDisplay() {
+                $('#count').text(counter);
+            }
+
+            $('#increase').click(function () {
+                counter++;
+                updateDisplay();
+            });
+
+            $('#decrease').click(function () {
+                counter--;
+                updateDisplay();
+            });
+
+            $('#reset').click(function () {
+                counter = 0;
+                updateDisplay();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

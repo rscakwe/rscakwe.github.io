@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mata Pelajaran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-4 bg-blue-500 text-white shadow-md flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-bold">Daftar Mata Pelajaran</h1>
+            <p class="text-sm">Pilih mapel untuk melihat detail atau edit</p>
+        </div>
+        <a href="create.html"
+            class="flex items-center bg-white text-blue-500 px-3 py-2 rounded-lg shadow hover:bg-blue-100 transition">
+            <i class="fas fa-plus-circle mr-2"></i> Tambah
+        </a>
+    </header>
+
+    <!-- Konten -->
+    <main class="flex-1 p-4 pb-20">
+        <div id="subjectList" class="space-y-4"></div>
+    </main>
+
+
+    <!-- Navbar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-md">
+        <ul class="flex justify-between">
+            <li class="flex-1 text-center py-2">
+                <a href="../index.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">Beranda</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../search.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="text-xs mt-1">Cari</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="create.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-plus-circle text-2xl"></i>
+                    <span class="text-xs mt-1">Tambah</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../notifications.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="text-xs mt-1">Notifikasi</span>
+                </a>
+            </li>
+            <li class="flex-1 text-center py-2">
+                <a href="../profile.html" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">Profil</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        fetch('../../assets/json/subjects.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('subjectList');
+
+                data.forEach(subject => {
+                    const item = document.createElement('div');
+                    item.className = "flex items-center justify-between p-4 bg-white rounded-lg shadow hover:bg-blue-100 transition";
+
+                    const info = document.createElement('a');
+                    info.href = `show.html?id=${subject.id}`;
+                    info.className = "flex items-center";
+                    info.innerHTML = `
+                        <i class="fas fa-book text-2xl text-blue-500 mr-4"></i>
+                        <div>
+                            <h2 class="font-medium text-gray-800">${subject.name}</h2>
+                            <p class="text-sm text-gray-500">Kode: ${subject.code}</p>
+                            <p class="text-xs text-gray-400">Guru Pengampu: ${subject.teacher}</p>
+                        </div>
+                    `;
+
+                    const editBtn = document.createElement('a');
+                    editBtn.href = `edit.html?id=${subject.id}`;
+                    editBtn.className = "ml-4 flex items-center text-white bg-green-500 px-3 py-1 rounded-lg hover:bg-green-600 transition";
+                    editBtn.innerHTML = `<i class="fas fa-edit mr-2"></i> Edit`;
+
+                    item.appendChild(info);
+                    item.appendChild(editBtn);
+
+                    container.appendChild(item);
+                });
+            })
+            .catch(err => console.error('Error:', err));
+    </script>
+
+</body>
+
+</html>

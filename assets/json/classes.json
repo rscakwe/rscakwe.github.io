@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Kelas 1A",
+    "teacher": "Budi Santoso",
+    "students": 28,
+    "level": "SD"
+  },
+  {
+    "id": 2,
+    "name": "Kelas 1B",
+    "teacher": "Siti Aminah",
+    "students": 30,
+    "level": "SD"
+  },
+  {
+    "id": 3,
+    "name": "Kelas 2A",
+    "teacher": "Rudi Hartono",
+    "students": 27,
+    "level": "SD"
+  },
+  {
+    "id": 4,
+    "name": "Kelas 2B",
+    "teacher": "Dewi Lestari",
+    "students": 29,
+    "level": "SD"
+  },
+  {
+    "id": 5,
+    "name": "Kelas 3A",
+    "teacher": "Agus Prasetyo",
+    "students": 31,
+    "level": "SD"
+  },
+  {
+    "id": 6,
+    "name": "Kelas 3B",
+    "teacher": "Rina Marlina",
+    "students": 28,
+    "level": "SD"
+  },
+  {
+    "id": 7,
+    "name": "Kelas 4A",
+    "teacher": "Hendra Saputra",
+    "students": 32,
+    "level": "SD"
+  },
+  {
+    "id": 8,
+    "name": "Kelas 4B",
+    "teacher": "Fitriani",
+    "students": 30,
+    "level": "SD"
+  },
+  {
+    "id": 9,
+    "name": "Kelas 5A",
+    "teacher": "Yusuf Kurniawan",
+    "students": 29,
+    "level": "SD"
+  },
+  {
+    "id": 10,
+    "name": "Kelas 5B",
+    "teacher": "Maya Sari",
+    "students": 27,
+    "level": "SD"
+  }
+]

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Akun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="p-6 bg-blue-500 text-white shadow-md text-center">
+        <h1 class="text-2xl font-bold">Daftar Akun</h1>
+        <p class="text-sm mt-1">Pilih jenis akun yang ingin Anda buat</p>
+    </header>
+
+    <!-- Pilihan Registrasi -->
+    <main class="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+        <!-- Sekolah -->
+        <a href="register_school.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-school text-4xl text-blue-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Sekolah</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai institusi sekolah</p>
+        </a>
+
+        <!-- Guru -->
+        <a href="register_teacher.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-chalkboard-teacher text-4xl text-green-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Guru</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai guru pengajar</p>
+        </a>
+
+        <!-- Murid -->
+        <a href="register_student.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-user-graduate text-4xl text-purple-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Murid</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai siswa</p>
+        </a>
+
+        <!-- Staff -->
+        <a href="register_staff.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-users-cog text-4xl text-orange-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Staff</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai staf administrasi</p>
+        </a>
+
+        <!-- Orang Tua / Wali -->
+        <a href="register_parent.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-user-friends text-4xl text-red-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Orang Tua</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai orang tua/wali murid</p>
+        </a>
+
+        <!-- Kepala Sekolah -->
+        <a href="register_principal.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-user-tie text-4xl text-indigo-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Kepala Sekolah</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai kepala sekolah</p>
+        </a>
+
+        <!-- Konselor / Psikolog -->
+        <a href="register_counselor.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-hands-helping text-4xl text-teal-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Konselor</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai konselor/psikolog</p>
+        </a>
+
+        <!-- Alumni -->
+        <a href="register_alumni.html"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow hover:bg-blue-50 transition text-center">
+            <i class="fas fa-user-graduate text-4xl text-pink-500 mb-4"></i>
+            <h2 class="font-bold text-lg text-gray-800">Alumni</h2>
+            <p class="text-gray-500 text-sm mt-1">Mendaftar sebagai mantan siswa/alumni</p>
+        </a>
+
+    </main>
+
+</body>
+
+</html>
