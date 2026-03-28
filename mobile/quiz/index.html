@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Murid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <!-- NAVBAR BIRU DENGAN ICON BACK -->
+    <nav class="bg-blue-600 shadow-md py-3 px-6 flex items-center justify-between sticky top-0 z-10">
+        <!-- Icon Back -->
+        <button onclick="window.history.back()" class="text-white hover:text-gray-200 flex items-center">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <!-- Judul Center -->
+        <h1 class="text-xl font-semibold text-white text-center flex-1">Quiz Matematika</h1>
+
+        <!-- Placeholder kanan untuk menjaga center -->
+        <div class="w-6"></div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto mt-2 p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- SOAL -->
+        <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-lg">
+
+            <h1 class="text-2xl font-bold mb-4">
+                <i class="fas fa-brain text-blue-500"></i> Quiz Murid
+            </h1>
+
+            <div id="quiz">
+                <div id="question" class="text-lg font-semibold mb-4">Loading...</div>
+                <div id="options" class="space-y-3"></div>
+
+                <!-- Tombol Prev & Next Between -->
+                <div class="flex justify-between mt-6">
+                    <button id="prevBtn"
+                        class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-6 rounded-lg flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Sebelumnya
+                    </button>
+
+                    <button id="nextSubmitBtn"
+                        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg flex items-center">
+                        Berikutnya <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NAVIGASI -->
+        <div class="bg-white p-4 rounded-xl shadow-lg h-fit">
+            <h2 class="font-semibold mb-3">
+                <i class="fas fa-list"></i> Navigasi Soal
+            </h2>
+            <div id="navGrid" class="grid grid-cols-5 gap-2"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // ==== Fungsi untuk acak array ====
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // ==== Variabel global ====
+        let quizData = [];
+        let currentQuestion = 0;
+        let answers = [];
+
+        // ==== Load quiz JSON ====
+        fetch('../../assets/json/quiz.json')
+            .then(res => res.json())
+            .then(data => {
+                // Acak urutan soal
+                quizData = shuffleArray(data.quiz);
+
+                // Acak opsi setiap soal
+                quizData.forEach(q => {
+                    q.options = shuffleArray(q.options);
+                });
+
+                answers = new Array(quizData.length).fill(null);
+                loadQuestion();
+            })
+            .catch(err => {
+                document.getElementById("question").innerText = "Gagal memuat soal!";
+                console.error(err);
+            });
+
+        // ==== Load soal & opsi ====
+        function loadQuestion() {
+            const q = quizData[currentQuestion];
+
+            document.getElementById("question").innerText =
+                (currentQuestion + 1) + ". " + q.question;
+
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+
+            q.options.forEach(option => {
+                const btn = document.createElement("button");
+                btn.innerText = option;
+                btn.className = "w-full bg-gray-200 hover:bg-gray-300 py-2 rounded-lg";
+                btn.onclick = () => {
+                    answers[currentQuestion] = option;
+                    loadQuestion(); // refresh untuk menandai jawaban
+                };
+                if (answers[currentQuestion] === option) btn.classList.add("bg-yellow-200");
+                optionsDiv.appendChild(btn);
+            });
+
+            // Tombol prev disable di soal pertama
+            const prevBtn = document.getElementById("prevBtn");
+            prevBtn.disabled = currentQuestion === 0;
+            prevBtn.classList.toggle("opacity-50", currentQuestion === 0);
+
+            // Tombol next berubah menjadi submit di soal terakhir
+            const nextBtn = document.getElementById("nextSubmitBtn");
+            if (currentQuestion === quizData.length - 1) {
+                nextBtn.innerHTML = 'Submit Quiz <i class="fas fa-check ml-2"></i>';
+                nextBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                nextBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+            } else {
+                nextBtn.innerHTML = 'Berikutnya <i class="fas fa-arrow-right ml-2"></i>';
+                nextBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                nextBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+            }
+
+            renderNavigation();
+        }
+
+        // ==== Tombol Prev ====
+        document.getElementById("prevBtn").onclick = () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        };
+
+        // ==== Tombol Next / Submit ====
+        document.getElementById("nextSubmitBtn").onclick = () => {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                // Hitung skor persentase
+                let correct = 0;
+                quizData.forEach((q, i) => {
+                    if (answers[i] === q.answer) correct++;
+                });
+                let scorePercent = Math.round((correct / quizData.length) * 100);
+                alert(`Skor kamu: ${scorePercent} / 100`);
+            }
+        };
+
+        // ==== Navigasi nomor soal ====
+        function renderNavigation() {
+            const nav = document.getElementById("navGrid");
+            nav.innerHTML = "";
+
+            quizData.forEach((_, index) => {
+                const btn = document.createElement("button");
+                btn.innerText = index + 1;
+
+                let color = "bg-gray-200";
+                if (answers[index] !== null) color = "bg-yellow-200";
+                if (index === currentQuestion) color = "bg-blue-500 text-white";
+
+                btn.className = `py-2 rounded text-sm ${color}`;
+
+                btn.onclick = () => {
+                    currentQuestion = index;
+                    loadQuestion();
+                };
+
+                nav.appendChild(btn);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

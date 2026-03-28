@@ -54,7 +54,6 @@
     <div class="mt-4 text-center text-sm text-gray-700 w-full max-w-md">
         <p>Belum punya akun? <a href="register.html" class="text-blue-600 hover:underline">Daftar</a></p>
     </div>
-
     <script>
         // Fungsi login generik
         function loginUser(list) {
@@ -74,7 +73,10 @@
 
             let user = loginUser(staffList);
             if (user) {
-                localStorage.setItem('currentUserRole', 'staff'); // simpan role
+                localStorage.setItem('isLoggedIn', 'true'); // tanda sudah login
+                localStorage.setItem('currentUserRole', 'staff');
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
                 alert('Login berhasil! (Staff)');
                 window.location.href = '../index.html';
                 return;
@@ -82,7 +84,10 @@
 
             user = loginUser(teacherList);
             if (user) {
-                localStorage.setItem('currentUserRole', 'guru'); // simpan role
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUserRole', 'guru');
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
                 alert('Login berhasil! (Guru)');
                 window.location.href = '../index.html';
                 return;
@@ -90,7 +95,10 @@
 
             user = loginUser(studentList);
             if (user) {
-                localStorage.setItem('currentUserRole', 'murid'); // simpan role
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUserRole', 'murid');
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
                 alert('Login berhasil! (Murid)');
                 window.location.href = '../index.html';
                 return;
@@ -98,7 +106,10 @@
 
             user = loginUser(parentList);
             if (user) {
-                localStorage.setItem('currentUserRole', 'orangtua'); // simpan role
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUserRole', 'orangtua');
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
                 alert('Login berhasil! (Orang Tua)');
                 window.location.href = '../index.html';
                 return;

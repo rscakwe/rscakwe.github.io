@@ -1,13 +1,5 @@
 [
   {
-    "title": "Sekolah",
-    "icon": "fas fa-school",
-    "color": "gray-600",
-    "bgHover": "hover:bg-blue-100",
-    "link": "school/index.html",
-    "roles": ["all"]
-  },
-  {
     "title": "Perpustakaan",
     "icon": "fas fa-book-reader",
     "color": "gray-600",
@@ -21,6 +13,22 @@
     "color": "gray-600",
     "bgHover": "hover:bg-blue-100",
     "link": "schedule/index.html",
+    "roles": ["murid"]
+  },
+  {
+    "title": "Quiz",
+    "icon": "fas fa-question-circle",
+    "color": "gray-600",
+    "bgHover": "hover:bg-green-100",
+    "link": "quiz/index.html",
+    "roles": ["murid"]
+  },
+  {
+    "title": "Tugas",
+    "icon": "fas fa-clipboard-list",
+    "color": "gray-600",
+    "bgHover": "hover:bg-yellow-100",
+    "link": "tasks/index.html",
     "roles": ["murid"]
   },
   {
@@ -134,21 +142,5 @@
     "bgHover": "hover:bg-blue-100",
     "link": "finance/index.html",
     "roles": ["staff"]
-  },
-  {
-    "title": "Profil",
-    "icon": "fas fa-user",
-    "color": "gray-600",
-    "bgHover": "hover:bg-blue-100",
-    "link": "profile/index.html",
-    "roles": ["all"]
-  },
-  {
-    "title": "Pengaturan",
-    "icon": "fas fa-cog",
-    "color": "gray-600",
-    "bgHover": "hover:bg-blue-100",
-    "link": "settings/index.html",
-    "roles": ["all"]
   }
 ]

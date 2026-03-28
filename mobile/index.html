@@ -12,9 +12,9 @@
 <body class="bg-gray-100 flex flex-col min-h-screen">
 
     <!-- Header -->
-    <header class="p-4 bg-white shadow-md">
+    <header class="p-4 bg-white shadow-md flex items-center justify-between">
         <h1 class="text-xl font-bold text-gray-800">Selamat Datang!</h1>
-        <p class="text-sm text-gray-500">Pilih menu di bawah untuk mulai</p>
+        <div class="text-sm text-gray-500" id="userNameDisplay">Halo, User</div>
     </header>
 
     <!-- Konten Utama -->
@@ -59,12 +59,25 @@
             </li>
         </ul>
     </nav>
+
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            // ===== CEK LOGIN =====
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                window.location.href = "auth/login.html";
+                return;
+            }
+
+            // Ambil data user dari localStorage
+            const userName = localStorage.getItem('userName') || 'User';
             const role = localStorage.getItem('currentUserRole') || 'murid';
+            document.getElementById('userNameDisplay').innerText = `Halo, ${userName}`;
+
             const menuContainer = document.getElementById('menuContainer');
 
             try {
+                // Pastikan path JSON sesuai struktur foldermu
                 const response = await fetch('../assets/json/menus.json');
                 const menus = await response.json();
 

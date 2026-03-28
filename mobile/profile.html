@@ -13,10 +13,11 @@
 
     <!-- Header -->
     <header class="p-4 bg-white shadow-md flex items-center">
-        <img src="https://placehold.co/60" alt="Foto Profil" class="w-16 h-16 rounded-full mr-4">
+        <img src="https://placehold.co/60" alt="Foto Profil" class="w-16 h-16 rounded-full mr-4" id="profilePhoto">
         <div>
-            <h1 class="text-xl font-bold text-gray-800">John Doe</h1>
-            <p class="text-sm text-gray-500">john.doe@example.com</p>
+            <h1 class="text-xl font-bold text-gray-800" id="userName">Nama User</h1>
+            <p class="text-sm text-gray-500" id="userEmail">email@example.com</p>
+            <p class="text-xs text-gray-400" id="userRole">Role: murid</p>
         </div>
     </header>
 
@@ -40,7 +41,7 @@
 
             <li>
                 <a href="auth/login.html"
-                    class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-red-50 transition">
+                    class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-red-50 transition" id="logoutBtn">
                     <i class="fas fa-sign-out-alt text-red-500 text-xl mr-4"></i>
                     <span class="text-gray-800 font-medium">Logout</span>
                 </a>
@@ -84,6 +85,32 @@
             </li>
         </ul>
     </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // ===== CEK LOGIN =====
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                window.location.href = "auth/login.html";
+                return;
+            }
+
+            // Ambil data user dari localStorage
+            const userName = localStorage.getItem('userName') || 'Nama User';
+            const userEmail = localStorage.getItem('userEmail') || 'email@example.com';
+            const userRole = localStorage.getItem('currentUserRole') || 'murid';
+
+            document.getElementById('userName').innerText = userName;
+            document.getElementById('userEmail').innerText = userEmail;
+            document.getElementById('userRole').innerText = `Role: ${userRole}`;
+
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                localStorage.clear();
+                window.location.href = "auth/login.html";
+            });
+        });
+    </script>
 
 </body>
 
