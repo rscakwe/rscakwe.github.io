@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Absensi</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- QR Code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- ================= HEADER ================= -->
+    <header class="p-4 bg-blue-500 text-white shadow relative flex items-center">
+
+        <!-- Back -->
+        <a href="../index.html" class="text-xl z-10">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <!-- Title (CENTER FIX) -->
+        <h1 class="absolute left-1/2 transform -translate-x-1/2 text-lg font-semibold">
+            Absensi
+        </h1>
+
+        <!-- Menu -->
+        <div class="ml-auto relative z-10">
+            <button id="headerMenuBtn" class="text-xl">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </button>
+
+            <!-- Dropdown -->
+            <div id="headerDropdown"
+                class="hidden absolute right-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg z-50">
+
+                <a href="#" onclick="alert('Detail halaman')" class="block px-4 py-2 hover:bg-gray-100">
+                    <i class="fas fa-eye mr-2"></i> Detail
+                </a>
+
+                <a href="#" onclick="alert('Edit halaman')" class="block px-4 py-2 hover:bg-gray-100">
+                    <i class="fas fa-edit mr-2"></i> Edit
+                </a>
+
+                <button onclick="alert('Hapus halaman')"
+                    class="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100">
+                    <i class="fas fa-trash mr-2"></i> Delete
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= CONTENT ================= -->
+    <div class="flex flex-col items-center justify-center h-[80vh] px-4">
+
+        <!-- Info -->
+        <h2 class="mb-2 text-gray-700 font-semibold text-center">
+            Scan QR untuk Absensi
+        </h2>
+
+        <p id="tanggal" class="text-sm text-gray-500 mb-4"></p>
+
+        <!-- QR -->
+        <div id="qrcode" class="bg-white p-4 rounded-xl shadow-lg"></div>
+
+        <!-- Status -->
+        <p id="status" class="mt-4 text-green-600 font-semibold"></p>
+
+    </div>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        // ================= DROPDOWN =================
+        const btn = document.getElementById("headerMenuBtn");
+        const menu = document.getElementById("headerDropdown");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+
+        window.addEventListener("click", function (e) {
+            if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.add("hidden");
+            }
+        });
+
+        // ================= TANGGAL =================
+        let now = new Date();
+        document.getElementById("tanggal").innerText =
+            now.toLocaleString();
+
+        // ================= QR CODE =================
+        let dataAbsensi = "ABSEN_" + now.toISOString();
+
+        let size = window.innerWidth < 400 ? 180 : 220;
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: dataAbsensi,
+            width: size,
+            height: size
+        });
+
+        // ================= SIMULASI STATUS =================
+        setTimeout(() => {
+            document.getElementById("status").innerText =
+                "QR siap digunakan";
+        }, 500);
+    </script>
+
+</body>
+
+</html>
